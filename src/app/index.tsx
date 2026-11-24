@@ -1,7 +1,6 @@
 import * as Device from 'expo-device';
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
 import { AnimatedIcon } from '@/components/animated-icon';
 import { HintRow } from '@/components/hint-row';
 import { ThemedText } from '@/components/themed-text';
@@ -9,7 +8,8 @@ import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { Link } from 'expo-router';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
+import { navigate } from 'expo-router/build/global-state/router.js';
 
 
 
@@ -20,18 +20,21 @@ export default function HomeScreen() {
         <ThemedView style={styles.heroSection}>
           <AnimatedIcon />
           <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Projet _
+            CityPoucave
           </ThemedText>
         </ThemedView>
-
         <View>
-          <Link href="/login">Connexion</Link>
-          <Link href="/register">Inscription</Link>
+        <Button
+          title="Connexion"
+          onPress={() => navigate("/login")}
+          />
+        <Button
+          title="Inscription"
+          onPress={() => navigate("/register")}
+          />
         </View>
 
-        
-
-        {Platform.OS === 'web' && <WebBadge />}
+      {Platform.OS === 'web' && <WebBadge />}
       </SafeAreaView>
     </ThemedView>
   );
@@ -70,5 +73,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,
+  },
+  buttonContainer: {
+    flex: 1,
+    paddingHorizontal: Spacing.four,
+    alignItems: 'center',
+    gap: Spacing.three,
+    paddingBottom: BottomTabInset + Spacing.three,
+    maxWidth: MaxContentWidth,
   },
 });
