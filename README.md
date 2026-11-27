@@ -27,6 +27,22 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
+## Database with Docker Compose
+
+Start PostgreSQL with the schema and sample data:
+
+```bash
+docker compose up -d
+```
+
+Connect on `localhost:5432` with database `citypoucave`, user `citypoucave`,
+and password `citypoucave_dev` by default. Override the password by setting
+`POSTGRES_PASSWORD` in the environment before starting Compose.
+
+The SQL initialization scripts run only when the database volume is first
+created. Stop the database with `docker compose down`; its data remains in the
+named volume.
+
 You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## Conventions
