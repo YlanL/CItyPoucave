@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     const values = [
       lastName,
       firstName,
-      email,
+      email.trim().toLowerCase(),
       address,
       postcode,
       city,

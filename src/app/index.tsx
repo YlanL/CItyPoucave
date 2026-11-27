@@ -1,17 +1,15 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-import { Link } from 'expo-router';
-import { View, Button } from 'react-native';
-import { navigate } from 'expo-router/build/global-state/router.js';
-
-
+import * as Device from "expo-device";
+import { Platform, StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { AnimatedIcon } from "@/components/animated-icon";
+import { HintRow } from "@/components/hint-row";
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { WebBadge } from "@/components/web-badge";
+import { BottomTabInset, MaxContentWidth, Spacing } from "@/constants/theme";
+import { Link } from "expo-router";
+import { View, Button } from "react-native";
+import { navigate } from "expo-router/build/global-state/router.js";
 
 export default function HomeScreen() {
   return (
@@ -23,18 +21,12 @@ export default function HomeScreen() {
             CityPoucave
           </ThemedText>
         </ThemedView>
-        <View>
-        <Button
-          title="Connexion"
-          onPress={() => navigate("/login")}
-          />
-        <Button
-          title="Inscription"
-          onPress={() => navigate("/register")}
-          />
+        <View style={styles.buttonContainer}>
+          <Button title="Connexion" onPress={() => navigate("/login")} />
+          <Button title="Inscription" onPress={() => navigate("/register")} />
         </View>
 
-      {Platform.OS === 'web' && <WebBadge />}
+        {Platform.OS === "web" && <WebBadge />}
       </SafeAreaView>
     </ThemedView>
   );
@@ -43,43 +35,40 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    justifyContent: "center",
+    flexDirection: "row",
   },
   safeArea: {
     flex: 1,
     paddingHorizontal: Spacing.four,
-    alignItems: 'center',
+    alignItems: "center",
     gap: Spacing.three,
     paddingBottom: BottomTabInset + Spacing.three,
     maxWidth: MaxContentWidth,
   },
   heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     flex: 1,
     paddingHorizontal: Spacing.four,
     gap: Spacing.four,
   },
   title: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   code: {
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   stepContainer: {
     gap: Spacing.three,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,
   },
   buttonContainer: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    justifyContent: "space-evenly",
+    flexDirection: "column",
   },
 });

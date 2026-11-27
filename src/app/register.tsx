@@ -1,9 +1,10 @@
 import * as Device from "expo-device";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TextInput } from "react-native";
 import { Text, View, Button } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 
 export default function Register() {
@@ -15,6 +16,7 @@ export default function Register() {
   const [postcode, setPostCode] = useState("");
   const [city, setCity] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const saveData = async () => {
     if (
       email &&
@@ -132,25 +134,35 @@ export default function Register() {
             onChangeText={(text) => setCity(text)}
           />
         </View>
+        <View style={styles.passwordInput}>
+          <TextInput
+            editable
+            secureTextEntry={!showPassword}
+            maxLength={40}
+            style={[styles.textInput, { flex: 1 }]}
+            placeholder="Mot de passe"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <Ionicons
+              name={showPassword ? "eye" : "eye-off"}
+              size={22}
+              color="black"
+            ></Ionicons>
+          </TouchableOpacity>
+        </View>
 
         <TextInput
           editable
-          secureTextEntry={true}
-          maxLength={40}
-          style={styles.textInput}
-          placeholder="Mot de passe"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-        />
-        <TextInput
-          editable
-          secureTextEntry={true}
+          secureTextEntry={!showPassword}
           maxLength={40}
           style={styles.textInput}
           placeholder="Confirmer le mot de passe"
           value={confirmPassword}
           onChangeText={(text) => setConfirmPassword(text)}
         />
+
         <Button title="S'inscrire" onPress={saveData} />
       </SafeAreaView>
     </SafeAreaProvider>
@@ -163,5 +175,9 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderWidth: 1,
     margin: 12,
+  },
+  passwordInput: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
