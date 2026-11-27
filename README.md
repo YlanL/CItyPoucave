@@ -27,6 +27,17 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
+## Test PostgreSQL connection
+
+Set the connection values in `.env`, then install the PostgreSQL driver and run the test script:
+
+```powershell
+npm install pg
+node --env-file=.env .\scripts\test-db-connection.cjs
+```
+
+The `.env` file is local and ignored by Git. Replace `PGPASSWORD` with your PostgreSQL password. The Docker container must be running and expose port `5432` to the host for `127.0.0.1:5432` to work.
+
 You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## Conventions
