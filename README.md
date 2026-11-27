@@ -29,6 +29,17 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+## Conventions
+
+Code on branches like 'dev-<feature-name>' or 'dev-<dev-name>'
+Commits need to be done in english.
+Then pull request on the 'dev' branch (1 reviewer required)
+When a feature/group of feature is finished, we will PR on main.
+
+Code needs to be written in english for methods, var, files names...
+Comments can be done in french
+
+
 ## Get a fresh project
 
 When you're ready, run:
