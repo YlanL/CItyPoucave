@@ -6,6 +6,7 @@ import { TextInput } from "react-native";
 import { Text, View, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
+import API_CONFIG from "../config/api";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ export default function Register() {
   const [city, setCity] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  
   const saveData = async () => {
     if (
       email &&
@@ -32,8 +34,7 @@ export default function Register() {
         alert("Les mots de passe ne correspondent pas");
         return;
       } else {
-        const url = "/register"; //api
-        let result = await fetch(url, {
+        const result = await fetch(`${API_CONFIG.BASE_URL}/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
