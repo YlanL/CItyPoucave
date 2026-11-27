@@ -1,4 +1,21 @@
-# Welcome to your Expo app 👋
+# Composition du projet 
+
+# API
+Le projet contient dans un même dépot la partie mobile et l'api.
+Il est nécessaire d'utiliser l'api pour récupérer les données (sécurité)  
+L'api est située dans le dossier /api. Il faut installer les dépendances avec  
+
+```bash
+npm install
+``` 
+puis
+
+```bash
+npm run dev
+``` 
+pour tester l'api, se rendre sur /health
+
+# app mobile Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 

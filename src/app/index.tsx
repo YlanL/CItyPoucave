@@ -10,8 +10,10 @@ import { BottomTabInset, MaxContentWidth, Spacing } from "@/constants/theme";
 import { Link } from "expo-router";
 import { View, Button } from "react-native";
 import { navigate } from "expo-router/build/global-state/router.js";
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
+  const router = useRouter();
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -24,6 +26,8 @@ export default function HomeScreen() {
         <View style={styles.buttonContainer}>
           <Button title="Connexion" onPress={() => navigate("/login")} />
           <Button title="Inscription" onPress={() => navigate("/register")} />
+          <Button title="Health" onPress={() => router.push("/health")} />
+
         </View>
 
         {Platform.OS === "web" && <WebBadge />}
@@ -70,5 +74,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-evenly",
     flexDirection: "column",
+  },
+  link: {
+    color: 'blue',
   },
 });
